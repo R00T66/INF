@@ -279,7 +279,7 @@ local function DKRTLG_fake_script() -- Toggle_ACCESSORY.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.Settings("ACCESSORY"))
+	SetButtonValue(_G.Settings["ACCESSORY"])
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["ACCESSORY"] = not _G.Settings["ACCESSORY"]
@@ -301,7 +301,7 @@ local function SBGUZ_fake_script() -- Toggle_WEAPON.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.GetSettings("WEAPON"))
+	SetButtonValue(_G.Settings["WEAPON"])
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["WEAPON"] = not _G.Settings["WEAPON"]
@@ -323,7 +323,7 @@ local function FNBIQ_fake_script() -- Toggle_HISTORY.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.Settings("HISTORY"))
+	SetButtonValue(_G.Settings["HISTORY"])
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["HISTORY"] = not _G.Settings["HISTORY"]
@@ -359,7 +359,7 @@ local function KDDXXF_fake_script() -- Toggle_WEBHOOK.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.Settings("WEBHOOK"))
+	SetButtonValue(_G.Settings["WEBHOOK"])
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["WEBHOOK"] = not _G.Settings["WEBHOOK"]
@@ -370,4 +370,4 @@ local function KDDXXF_fake_script() -- Toggle_WEBHOOK.ButtonScript
 end
 coroutine.wrap(KDDXXF_fake_script)()
 
-print("V.2")
+print("V.2 - FIXED")
