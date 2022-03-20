@@ -1,1 +1,367 @@
--- WIP
+local INF = Instance.new("ScreenGui")
+local Closed = Instance.new("Frame")
+local Corner = Instance.new("UICorner")
+local Gradient = Instance.new("UIGradient")
+local Button = Instance.new("TextButton")
+local Open = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Button_2 = Instance.new("TextButton")
+local Gradient_2 = Instance.new("UIGradient")
+local Toggle_ACCESSORY = Instance.new("TextButton")
+local Value = Instance.new("TextLabel")
+local Toggle_WEAPON = Instance.new("TextButton")
+local Value_2 = Instance.new("TextLabel")
+local Toggle_HISTORY = Instance.new("TextButton")
+local Value_3 = Instance.new("TextLabel")
+local Set_WEBHOOK = Instance.new("TextButton")
+local WEBHOOK_VALUE = Instance.new("TextBox")
+local Toggle_WEBHOOK = Instance.new("TextButton")
+local Value_4 = Instance.new("TextLabel")
+
+syn.protect_gui(INF)
+
+INF.Name = "INF"
+INF.Parent = game:GetService("CoreGui")
+
+Closed.Name = "Closed"
+Closed.Parent = INF
+Closed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Closed.Position = UDim2.new(0.847233057, 0, 0.516778529, 0)
+Closed.Size = UDim2.new(0, 159, 0, 42)
+
+Corner.Name = "Corner"
+Corner.Parent = Closed
+
+Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(0.38, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(133, 46, 255))}
+Gradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.50), NumberSequenceKeypoint.new(1.00, 0.50)}
+Gradient.Name = "Gradient"
+Gradient.Parent = Closed
+
+Button.Name = "Button"
+Button.Parent = Closed
+Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button.BackgroundTransparency = 1.000
+Button.Position = UDim2.new(-5.96046448e-08, 0, 0, 0)
+Button.Size = UDim2.new(0, 158, 0, 42)
+Button.Font = Enum.Font.GothamBold
+Button.Text = "SETTINGS"
+Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.TextScaled = true
+Button.TextSize = 14.000
+Button.TextWrapped = true
+
+Open.Name = "Open"
+Open.Parent = INF
+Open.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Open.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Open.BorderSizePixel = 0
+Open.Position = UDim2.new(0.289166003, 0, 0.179530203, 0)
+Open.Size = UDim2.new(0, 541, 0, 381)
+Open.Visible = false
+
+Title.Name = "Title"
+Title.Parent = Open
+Title.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Title.BackgroundTransparency = 0.200
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 541, 0, 25)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "SETTINGS GUI"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+Button_2.Name = "Button"
+Button_2.Parent = Title
+Button_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_2.BackgroundTransparency = 1.000
+Button_2.Position = UDim2.new(0.942698717, 0, 0, 0)
+Button_2.Size = UDim2.new(0, 31, 0, 25)
+Button_2.Font = Enum.Font.GothamBold
+Button_2.Text = "X"
+Button_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button_2.TextSize = 14.000
+Button_2.TextWrapped = true
+
+Gradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(0.38, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(133, 46, 255))}
+Gradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.50), NumberSequenceKeypoint.new(1.00, 0.50)}
+Gradient_2.Name = "Gradient"
+Gradient_2.Parent = Open
+
+Toggle_ACCESSORY.Name = "Toggle_ACCESSORY"
+Toggle_ACCESSORY.Parent = Open
+Toggle_ACCESSORY.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Toggle_ACCESSORY.BackgroundTransparency = 0.200
+Toggle_ACCESSORY.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Toggle_ACCESSORY.BorderSizePixel = 0
+Toggle_ACCESSORY.Position = UDim2.new(0.0184842888, 0, 0.0971128643, 0)
+Toggle_ACCESSORY.Size = UDim2.new(0, 463, 0, 34)
+Toggle_ACCESSORY.Font = Enum.Font.GothamBold
+Toggle_ACCESSORY.Text = "DETECT ACCESSORY ENCHANTS"
+Toggle_ACCESSORY.TextColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_ACCESSORY.TextSize = 20.000
+Toggle_ACCESSORY.TextWrapped = true
+
+Value.Name = "Value"
+Value.Parent = Toggle_ACCESSORY
+Value.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+Value.BackgroundTransparency = 0.200
+Value.BorderSizePixel = 0
+Value.Position = UDim2.new(1.01727867, 0, 0, 0)
+Value.Size = UDim2.new(0, 53, 0, 34)
+Value.Font = Enum.Font.SourceSans
+Value.Text = ""
+Value.TextColor3 = Color3.fromRGB(0, 0, 0)
+Value.TextSize = 14.000
+
+Toggle_WEAPON.Name = "Toggle_WEAPON"
+Toggle_WEAPON.Parent = Open
+Toggle_WEAPON.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Toggle_WEAPON.BackgroundTransparency = 0.200
+Toggle_WEAPON.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Toggle_WEAPON.BorderSizePixel = 0
+Toggle_WEAPON.Position = UDim2.new(0.0184842888, 0, 0.207349092, 0)
+Toggle_WEAPON.Size = UDim2.new(0, 463, 0, 34)
+Toggle_WEAPON.Font = Enum.Font.GothamBold
+Toggle_WEAPON.Text = "DETECT WEAPON ENCHANTS"
+Toggle_WEAPON.TextColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_WEAPON.TextSize = 20.000
+Toggle_WEAPON.TextWrapped = true
+
+Value_2.Name = "Value"
+Value_2.Parent = Toggle_WEAPON
+Value_2.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+Value_2.BackgroundTransparency = 0.200
+Value_2.BorderSizePixel = 0
+Value_2.Position = UDim2.new(1.01727867, 0, 0, 0)
+Value_2.Size = UDim2.new(0, 53, 0, 34)
+Value_2.Font = Enum.Font.SourceSans
+Value_2.Text = ""
+Value_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+Value_2.TextSize = 14.000
+
+Toggle_HISTORY.Name = "Toggle_HISTORY"
+Toggle_HISTORY.Parent = Open
+Toggle_HISTORY.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Toggle_HISTORY.BackgroundTransparency = 0.200
+Toggle_HISTORY.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Toggle_HISTORY.BorderSizePixel = 0
+Toggle_HISTORY.Position = UDim2.new(0.0184842888, 0, 0.322834671, 0)
+Toggle_HISTORY.Size = UDim2.new(0, 463, 0, 34)
+Toggle_HISTORY.Font = Enum.Font.GothamBold
+Toggle_HISTORY.Text = "TOGGLE ENCHANT HISTORY"
+Toggle_HISTORY.TextColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_HISTORY.TextSize = 20.000
+Toggle_HISTORY.TextWrapped = true
+
+Value_3.Name = "Value"
+Value_3.Parent = Toggle_HISTORY
+Value_3.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Value_3.BackgroundTransparency = 0.200
+Value_3.BorderSizePixel = 0
+Value_3.Position = UDim2.new(1.01727867, 0, 0, 0)
+Value_3.Size = UDim2.new(0, 53, 0, 34)
+Value_3.Font = Enum.Font.SourceSans
+Value_3.Text = ""
+Value_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+Value_3.TextSize = 14.000
+
+Set_WEBHOOK.Name = "Set_WEBHOOK"
+Set_WEBHOOK.Parent = Open
+Set_WEBHOOK.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Set_WEBHOOK.BackgroundTransparency = 0.200
+Set_WEBHOOK.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Set_WEBHOOK.BorderSizePixel = 0
+Set_WEBHOOK.Position = UDim2.new(0.0147874309, 0, 0.7585302, 0)
+Set_WEBHOOK.Size = UDim2.new(0, 524, 0, 34)
+Set_WEBHOOK.Font = Enum.Font.GothamBold
+Set_WEBHOOK.Text = "SET WEBHOOK"
+Set_WEBHOOK.TextColor3 = Color3.fromRGB(255, 255, 255)
+Set_WEBHOOK.TextSize = 20.000
+Set_WEBHOOK.TextWrapped = true
+
+WEBHOOK_VALUE.Name = "WEBHOOK_VALUE"
+WEBHOOK_VALUE.Parent = Set_WEBHOOK
+WEBHOOK_VALUE.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+WEBHOOK_VALUE.BackgroundTransparency = 0.200
+WEBHOOK_VALUE.BorderSizePixel = 0
+WEBHOOK_VALUE.Position = UDim2.new(0, 0, 1.38235295, 0)
+WEBHOOK_VALUE.Size = UDim2.new(0, 524, 0, 34)
+WEBHOOK_VALUE.Font = Enum.Font.SourceSansBold
+WEBHOOK_VALUE.PlaceholderText = "WEBHOOK HERE"
+WEBHOOK_VALUE.Text = ""
+WEBHOOK_VALUE.TextColor3 = Color3.fromRGB(255, 255, 255)
+WEBHOOK_VALUE.TextScaled = true
+WEBHOOK_VALUE.TextSize = 5.000
+WEBHOOK_VALUE.TextWrapped = true
+
+Toggle_WEBHOOK.Name = "Toggle_WEBHOOK"
+Toggle_WEBHOOK.Parent = Open
+Toggle_WEBHOOK.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Toggle_WEBHOOK.BackgroundTransparency = 0.200
+Toggle_WEBHOOK.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Toggle_WEBHOOK.BorderSizePixel = 0
+Toggle_WEBHOOK.Position = UDim2.new(0.0184842888, 0, 0.43832022, 0)
+Toggle_WEBHOOK.Size = UDim2.new(0, 463, 0, 34)
+Toggle_WEBHOOK.Font = Enum.Font.GothamBold
+Toggle_WEBHOOK.Text = "TOGGLE WEBHOOK LOGGER"
+Toggle_WEBHOOK.TextColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_WEBHOOK.TextSize = 20.000
+Toggle_WEBHOOK.TextWrapped = true
+
+Value_4.Name = "Value"
+Value_4.Parent = Toggle_WEBHOOK
+Value_4.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Value_4.BackgroundTransparency = 0.200
+Value_4.BorderSizePixel = 0
+Value_4.Position = UDim2.new(1.01727867, 0, 0, 0)
+Value_4.Size = UDim2.new(0, 53, 0, 34)
+Value_4.Font = Enum.Font.SourceSans
+Value_4.Text = ""
+Value_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+Value_4.TextSize = 14.000
+
+local function ROLY_fake_script()
+	local script = Instance.new('LocalScript', Button)
+
+	local Button = script["Parent"]
+	local Frame = Button["Parent"]
+	local GUI = Frame["Parent"]
+	local Toggle = function()
+		if GUI:FindFirstChild("Open") then
+			if GUI:FindFirstChild("Open").Visible then
+				Frame.Visible = false
+				return
+			else
+				GUI:FindFirstChild("Open").Visible = true
+				Frame.Visible = false
+			end
+		end
+	end
+	
+	Button.MouseButton1Down:Connect(Toggle)
+end
+coroutine.wrap(ROLY_fake_script)()
+local function NUVLTK_fake_script() -- Button_2.ButtonScript 
+	local script = Instance.new('LocalScript', Button_2)
+
+	local Button = script["Parent"]
+	local Title = Button["Parent"]
+	local Frame = Title["Parent"]
+	local GUI = Frame["Parent"]
+	local Toggle = function()
+		if GUI:FindFirstChild("Closed") then
+			if GUI:FindFirstChild("Closed").Visible then
+				Frame.Visible = false
+				return
+			else
+				GUI:FindFirstChild("Closed").Visible = true
+				Frame.Visible = false
+			end
+		end
+	end
+	
+	Button.MouseButton1Down:Connect(Toggle)
+end
+coroutine.wrap(NUVLTK_fake_script)()
+local function EANZN_fake_script() -- Toggle_ACCESSORY.ButtonScript 
+	local script = Instance.new('LocalScript', Toggle_ACCESSORY)
+
+	local Button = script["Parent"]
+	local SetButtonValue = function(Bool)
+		if not Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		elseif Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		end
+	end
+	
+	SetButtonValue(_G.GetSettings("ACCESSORY"))
+	
+	Button.MouseButton1Down:Connect(function(...)
+		_G.Settings["ACCESSORY"] = not _G.Settings["ACCESSORY"]
+		_G.SaveSettings()
+		
+		SetButtonValue(_G.Settings["ACCESSORY"])
+	end)
+end
+coroutine.wrap(EANZN_fake_script)()
+local function BXUL_fake_script() -- Toggle_WEAPON.ButtonScript 
+	local script = Instance.new('LocalScript', Toggle_WEAPON)
+
+	local Button = script["Parent"]
+	local SetButtonValue = function(Bool)
+		if not Bool then
+		   Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		elseif Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		end
+	end
+	
+	SetButtonValue(_G.GetSettings("WEAPON"))
+	
+	Button.MouseButton1Down:Connect(function(...)
+		_G.Settings["WEAPON"] = not _G.Settings["WEAPON"]
+		_G.SaveSettings()
+		
+		SetButtonValue(_G.Settings["WEAPON"])
+	end)
+end
+coroutine.wrap(BXUL_fake_script)()
+local function ZLDFE_fake_script() -- Toggle_HISTORY.ButtonScript 
+	local script = Instance.new('LocalScript', Toggle_HISTORY)
+
+	local Button = script["Parent"]
+	local SetButtonValue = function(Bool)
+		if not Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		elseif Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		end
+	end
+	
+	SetButtonValue(_G.GetSettings("HISTORY"))
+	
+	Button.MouseButton1Down:Connect(function(...)
+		_G.Settings["HISTORY"] = not _G.Settings["HISTORY"]
+		_G.SaveSettings()
+		
+		SetButtonValue(_G.Settings["HISTORY"])
+	end)
+end
+coroutine.wrap(ZLDFE_fake_script)()
+local function FZTRM_fake_script() -- Set_WEBHOOK.ButtonScript 
+	local script = Instance.new('LocalScript', Set_WEBHOOK)
+
+	local Button = script["Parent"]
+	local Webhook = Button:WaitForChild("WEBHOOK_VALUE")
+	
+	Button.MouseButton1Down:Connect(function(...)
+		_G.Settings["WEBHOOK_VALUE"] = Webhook.Text;
+		_G.SaveSettings()
+		
+		Webhook.Text = "";
+	end)
+end
+coroutine.wrap(FZTRM_fake_script)()
+local function VGHZ_fake_script() -- Toggle_WEBHOOK.ButtonScript 
+	local script = Instance.new('LocalScript', Toggle_WEBHOOK)
+
+	local Button = script["Parent"]
+	local SetButtonValue = function(Bool)
+		if not Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		elseif Bool then
+			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		end
+	end
+	
+	SetButtonValue(_G.GetSettings("WEBHOOK"))
+	
+	Button.MouseButton1Down:Connect(function(...)
+		_G.Settings["WEBHOOK"] = not _G.Settings["WEBHOOK"]
+		_G.SaveSettings()
+	end)
+end
+coroutine.wrap(VGHZ_fake_script)()
