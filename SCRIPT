@@ -1,0 +1,107 @@
+-- SERVICES
+
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+
+-- LOCALS
+
+local Client = Players.LocalPlayer
+
+-- LIBARIES
+
+local SuccessBLC,ByteCodeUtility = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/BLC"
+
+if not SuccessBLC then
+   
+   Client:Kick("\n\nNOTIFICATION UI ERROR")
+   
+   return
+else
+   ByteCodeUtility = loadstring(ByteCodeUtility)()
+end
+
+local SuccessNUI,NotificationUI = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/NUI"
+
+if not SuccessNUI then
+   
+   Client:Kick("\n\nNOTIFICATION UI ERROR")
+   
+   return
+else
+   NotificationUI = loadstring(NotificationUI)()
+end
+
+local SuccessUTI, DeepwokenUtility = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/UTI")
+
+if not SuccessUTI then
+   
+   Client:Kick("\n\nUTILITY LIB ERROR")
+   
+   return
+else
+   DeepwokenUtility = loadstring(DeepwokenUtility)()
+end
+
+-- MAIN
+
+local Enchants = { }
+
+local WeaponCheck = function(j, x, v)
+   
+   local Info = { }
+   
+   Info["Enchant"] = j.Enchant;
+   Info["Weapon"] = DeepwokenUtility.AdjustName(x.Name);
+   Info["Player"] = v.Name;
+   
+   if j.SoulBound ~= nil then
+      Info["SoulBound"] = "YES"
+   else
+      Info["SoulBound"] = "NO"
+   end
+   
+   NotificationUI.WeaponNotification(
+    Info["Player"], 
+    Info["Enchant"],
+    Info["Weapon"],
+    Info["SoulBound"]
+   )
+   --[[HistoryUI.LogWeapon(
+    
+   )]]
+end
+
+local Check = function(x, v)
+   if not x:IsA("Tool") then return end
+   
+   if x:FindFirstChild("WeaponData") then
+
+      local MainValue = x:WaitForChild("WeaponData").Value
+      local MainJSON = MainValue
+      
+      MainJSON = DeepwokenUtility.GetData(MainJSON);
+      MainJSON = DeepwokenUtility.AdjustData(MainJSON);
+      MainJSON = DeepwokenUtility.Decode(MainJSON);
+      
+      if MainJSON.Enchant ~= nil then
+         WeaponCheck(MainJSON, x, v)
+      end
+   elseif x:FindFirstChild("Enchant") then
+      
+      local MainValue = x:WaitForChild("Enchant").Value
+   end
+end
+
+local Main = function()
+   pcall(function()
+       while wait(0.5) do
+          for i, v in pairs(Players:GetPlayers()) do
+             if v:FindFirstChild("Backpack") then
+                for z, x in pairs(v.Backpack:GetChildren()) do
+                   Check(x, v)
+                end
+             end
+          end
+       end
+   end)
+end
