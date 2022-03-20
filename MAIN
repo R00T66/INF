@@ -30,7 +30,7 @@ end
 _G.GetSettings = function(Str)
    if _G.Settings[Str] ~= nil then
 
-       return _G.Settings[Str]
+       return true
    else
  
        return false
@@ -65,7 +65,7 @@ end
 
 if not isfile(Settings_File) then
 
-   writefile(Settings_File, HttpService:JSONEncode(Settings_File));
+   writefile(Settings_File, HttpService:JSONEncode(Default_Settings));
 
    _G.Settings = Default_Settings
 
@@ -79,7 +79,7 @@ end
 
 -- OTHER
 
-local Load = function(Str)
+local Load = function(Str, Name)
    
    local Success, Error = pcall(function()
        loadstring(Str)()
@@ -87,7 +87,7 @@ local Load = function(Str)
 
    if not Success then
      
-      Client:Kick("\n\nVITAL ERROR\n\nERROR: " .. Error)
+      Client:Kick("\n\nVITAL ERROR [ " .. Name .. " ]\n\nERROR: " .. Error)
 
       return  
    else
@@ -118,8 +118,8 @@ local SCRIPT = GET("https://raw.githubusercontent.com/R00T66/INF/main/SCRIPT")
 
 -- LOADING
 
-local UI_RETURN = Load(UI)
-local SCRIPT_RETURN = Load(SCRIPT)
+local UI_RETURN = Load(UI, "UI")
+local SCRIPT_RETURN = Load(SCRIPT, "SCRIPT")
 
 if UI_RETURN ~= "OK" or SCRIPT_RETURN ~= "OK" then
 
