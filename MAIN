@@ -40,6 +40,7 @@ local Players = game:GetService("Players")
 local Settings_File = "INF_SETTINGS.JSON"
 
 _G.Settings = { }
+_G.INFGUIS = { }
 
 _G.SaveSettings = function()
    writefile(Settings_File, HttpService:JSONEncode(_G.Settings))
