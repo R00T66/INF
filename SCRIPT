@@ -9,18 +9,18 @@ local Client = Players.LocalPlayer
 
 -- LIBARIES
 
-local SuccessBLC,ByteCodeUtility = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/BLC"
+local SuccessBCL,ByteCodeUtility = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/BCL")
 
-if not SuccessBLC then
+if not SuccessBCL then
    
-   Client:Kick("\n\nNOTIFICATION UI ERROR")
+   Client:Kick("\n\nBYTECODE LIB ERROR")
    
    return
 else
    ByteCodeUtility = loadstring(ByteCodeUtility)()
 end
 
-local SuccessNUI,NotificationUI = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/NUI"
+local SuccessNUI,NotificationUI = pcall(game.HttpGet, game, "https://raw.githubusercontent.com/R00T66/INF/main/Dependants/NUI")
 
 if not SuccessNUI then
    
@@ -46,7 +46,7 @@ end
 
 local Enchants = { }
 
-local RefreshLog() = function(data)
+local RefreshLog = function(data)
    for i, enchants in pairs(Enchants) do
    
       if Players:FindFirstChild(enchants.Player) then
