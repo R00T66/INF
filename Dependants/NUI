@@ -13,6 +13,8 @@ local UICorner_3 = Instance.new("UICorner")
 local CS = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
 
+_G.INFGUIS.Notifications = ScreenGui
+
 syn.protect_gui(ScreenGui)
 
 ScreenGui.Parent = game:GetService("CoreGui")
