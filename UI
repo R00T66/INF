@@ -279,7 +279,7 @@ local function DKRTLG_fake_script() -- Toggle_ACCESSORY.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.GetSettings("ACCESSORY"))
+	SetButtonValue(_G.Settings("ACCESSORY"))
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["ACCESSORY"] = not _G.Settings["ACCESSORY"]
@@ -323,7 +323,7 @@ local function FNBIQ_fake_script() -- Toggle_HISTORY.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.GetSettings("HISTORY"))
+	SetButtonValue(_G.Settings("HISTORY"))
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["HISTORY"] = not _G.Settings["HISTORY"]
@@ -359,13 +359,15 @@ local function KDDXXF_fake_script() -- Toggle_WEBHOOK.ButtonScript
 		end
 	end
 	
-	SetButtonValue(_G.GetSettings("WEBHOOK"))
+	SetButtonValue(_G.Settings("WEBHOOK"))
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.Settings["WEBHOOK"] = not _G.Settings["WEBHOOK"]
 		_G.SaveSettings()
+		
+		SetButtonValue(_G.Settings("WEBHOOK"))
 	end)
 end
 coroutine.wrap(KDDXXF_fake_script)()
 
-print("V.1")
+print("V.2")
