@@ -1,5 +1,13 @@
 -- SERVICES
 
+_G.Settings = {
+ ["ACCESSORY"] = true,
+ ["WEAPON"] = true,
+ ["HISTORY"] = false,
+ ["WEBHOOK"] = false,
+ ["WEBHOOK_VALUE"] = ""
+}
+
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 
@@ -70,15 +78,13 @@ local Logged = function(data)
       end
    end
    
-   return Bool
+   return bool
 end
 
-local WeaponCheck = function(j, x, v)
-
-   if Logged(j) then return end
+local WeaponCheck = function(lv, j, x, v)
    
    table.insert(Enchants, {
-      Data = j,
+      Data = lv,
       Tool = x,
       Player = v.Name
    });
@@ -108,8 +114,6 @@ end
 
 local AccessoryCheck = function(j, x, v)
    
-   if Logged(j) then return end
-   
    table.insert(Enchants, {
       Data = j,
       Tool = x,
@@ -133,28 +137,25 @@ local AccessoryCheck = function(j, x, v)
 end
 
 local Check = function(x, v)
-   if not x:IsA("Tool") then return end
-   
    if x:FindFirstChild("WeaponData") then
-
+      
       local MainValue = x:WaitForChild("WeaponData").Value
-      local MainJSON = MainValue
+      local MainJSON = x:WaitForChild("WeaponData").Value
       
       MainJSON = DeepwokenUtility.GetData(MainJSON);
       MainJSON = DeepwokenUtility.AdjustData(MainJSON);
       MainJSON = DeepwokenUtility.Decode(MainJSON);
       
-      if MainJSON.Enchant ~= nil and _G.Settings["WEAPON"] then
-         WeaponCheck(MainJSON, x, v)
+      if MainJSON.Enchant ~= nil and _G.Settings["WEAPON"] and not Logged(MainValue) then
+         WeaponCheck(MainValue, MainJSON, x, v)
       else
          return
       end
-      
    elseif x:FindFirstChild("Enchant") then
       
       local MainValue = x:WaitForChild("Enchant").Value
       
-      if MainValue ~= "" and _G.Settings["ACCESSORY"] then
+      if MainValue ~= "" and _G.Settings["ACCESSORY"] and not Logged(MainValue) then
          AccessoryCheck(MainValue, x, v)
       else
          return
@@ -164,20 +165,30 @@ local Check = function(x, v)
 end
 
 local Main = function()
-   pcall(function()
+   local Success, Err = pcall(function()
        while wait(0.5) do
-          for i, v in pairs(Players:GetPlayers()) do
-             if v:FindFirstChild("Backpack") then               
-                for z, x in pairs(v.Backpack:GetChildren()) do
-                   Check(x, v)
-                end
-             end
-          end
+          local Success, Err = pcall(function()
+            for i, v in pairs(Players:GetPlayers()) do
+               if v:FindFirstChild("Backpack") then               
+                  for z, x in pairs(v.Backpack:GetChildren()) do
+                     if x:IsA("Tool") then
+                        Check(x, v)
+                     end
+                  end
+               end
+            end
           
-          RefreshLog()
+            RefreshLog()
+          end)
+          
+          if not Success then
+             --
+          end
        end
    end)
 end
 
+Main()
+--[[
 local Cor = coroutine.create(Main)
-local Res = coroutine.resume(Cor)
+local Res = coroutine.resume(Cor)]]
