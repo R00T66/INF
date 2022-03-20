@@ -51,7 +51,9 @@ local RefreshLog = function(data)
    
       if Players:FindFirstChild(enchants.Player) then
          if enchants.Data == data then
-            table.remove(Enchants, i)
+            if enchants.Tool.Parent == Players[enchants.Player].Character then
+               table.remove(Enchants, i)
+            end
          end
       else
          table.remove(Enchants, i)
