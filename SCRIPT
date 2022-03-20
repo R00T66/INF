@@ -1,13 +1,5 @@
 -- SERVICES
 
-_G.Settings = {
- ["ACCESSORY"] = true,
- ["WEAPON"] = true,
- ["HISTORY"] = false,
- ["WEBHOOK"] = false,
- ["WEBHOOK_VALUE"] = ""
-}
-
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 
