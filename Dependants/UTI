@@ -1,3 +1,5 @@
+local HttpService = game:GetService("HttpService")
+
 local Decode_JSON = function(Table)
     return HttpService:JSONDecode(Table)
 end
