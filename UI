@@ -237,9 +237,7 @@ UNLOAD.TextColor3 = Color3.fromRGB(0, 0, 0)
 UNLOAD.TextSize = 20.000
 UNLOAD.TextWrapped = true
 
--- Scripts:
-
-local function GVYW_fake_script() -- Button.ButtonScript 
+local function RXMWIOX_fake_script() -- Button.ButtonScript 
 	local script = Instance.new('LocalScript', Button)
 
 	local Button = script["Parent"]
@@ -259,8 +257,8 @@ local function GVYW_fake_script() -- Button.ButtonScript
 	
 	Button.MouseButton1Down:Connect(Toggle)
 end
-coroutine.wrap(GVYW_fake_script)()
-local function MBTXP_fake_script() -- Button_2.ButtonScript 
+coroutine.wrap(RXMWIOX_fake_script)()
+local function TNFZCG_fake_script() -- Button_2.ButtonScript 
 	local script = Instance.new('LocalScript', Button_2)
 
 	local Button = script["Parent"]
@@ -281,8 +279,8 @@ local function MBTXP_fake_script() -- Button_2.ButtonScript
 	
 	Button.MouseButton1Down:Connect(Toggle)
 end
-coroutine.wrap(MBTXP_fake_script)()
-local function PGQRAZP_fake_script() -- Toggle_ACCESSORY.ButtonScript 
+coroutine.wrap(TNFZCG_fake_script)()
+local function XVGFSG_fake_script() -- Toggle_ACCESSORY.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_ACCESSORY)
 
 	local Button = script["Parent"]
@@ -303,8 +301,8 @@ local function PGQRAZP_fake_script() -- Toggle_ACCESSORY.ButtonScript
 		SetButtonValue(_G.Settings["ACCESSORY"])
 	end)
 end
-coroutine.wrap(PGQRAZP_fake_script)()
-local function HAQZDN_fake_script() -- Toggle_WEAPON.ButtonScript 
+coroutine.wrap(XVGFSG_fake_script)()
+local function GJCOAR_fake_script() -- Toggle_WEAPON.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_WEAPON)
 
 	local Button = script["Parent"]
@@ -325,8 +323,8 @@ local function HAQZDN_fake_script() -- Toggle_WEAPON.ButtonScript
 		SetButtonValue(_G.Settings["WEAPON"])
 	end)
 end
-coroutine.wrap(HAQZDN_fake_script)()
-local function YGADDQ_fake_script() -- Toggle_HISTORY.ButtonScript 
+coroutine.wrap(GJCOAR_fake_script)()
+local function YDRD_fake_script() -- Toggle_HISTORY.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_HISTORY)
 
 	local Button = script["Parent"]
@@ -347,8 +345,8 @@ local function YGADDQ_fake_script() -- Toggle_HISTORY.ButtonScript
 		SetButtonValue(_G.Settings["HISTORY"])
 	end)
 end
-coroutine.wrap(YGADDQ_fake_script)()
-local function HHZCHN_fake_script() -- Set_WEBHOOK.ButtonScript 
+coroutine.wrap(YDRD_fake_script)()
+local function FHOA_fake_script() -- Set_WEBHOOK.ButtonScript 
 	local script = Instance.new('LocalScript', Set_WEBHOOK)
 
 	local Button = script["Parent"]
@@ -362,8 +360,8 @@ local function HHZCHN_fake_script() -- Set_WEBHOOK.ButtonScript
 		Webhook.Text = ""
 	end)
 end
-coroutine.wrap(HHZCHN_fake_script)()
-local function GWHXYTH_fake_script() -- Toggle_WEBHOOK.ButtonScript 
+coroutine.wrap(FHOA_fake_script)()
+local function CICKQ_fake_script() -- Toggle_WEBHOOK.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_WEBHOOK)
 
 	local Button = script["Parent"]
@@ -382,20 +380,21 @@ local function GWHXYTH_fake_script() -- Toggle_WEBHOOK.ButtonScript
 		_G.SaveSettings()
 	end)
 end
-coroutine.wrap(GWHXYTH_fake_script)()
-local function OIFKDG_fake_script() -- UNLOAD.ButtonScript 
+coroutine.wrap(CICKQ_fake_script)()
+local function YZTZZV_fake_script() -- UNLOAD.ButtonScript 
 	local script = Instance.new('LocalScript', UNLOAD)
 
 	local Button = script["Parent"]
+	local DeleteGUIs = function()
+	 
+	   _G.INFGUIS.Settings:Destroy()
+	   _G.INFGUIS.Notifications:Destroy()
+	   _G.INFGUIS.EnchantHistory:Destroy()
+	end
 	
 	Button.MouseButton1Down:Connect(function(...)
 		_G.UNLOADEDINF = true
-		
-		if game:GetService("CoreGui"):FindFirstChild("INF_LOGGER") then
-			game:GetService("CoreGui"):FindFirstChild("INF_LOGGER"):Destroy()
-		end
-		
-		game:GetService("CoreGui"):FindFirstChild("INF"):Destroy()
+		DeleteGUIs()
 	end)
 end
-coroutine.wrap(OIFKDG_fake_script)()
+coroutine.wrap(YZTZZV_fake_script)()
