@@ -51,6 +51,7 @@ local RefreshLog = function(data)
    
       if Players:FindFirstChild(enchants.Player) then
          if enchants.Data == data then
+            print(enchants.Tool.Parent, Players[enchants.Player].Character)
             if enchants.Tool.Parent == Players[enchants.Player].Character then
                table.remove(Enchants, i)
             end
@@ -162,6 +163,9 @@ local Main = function()
    local Success, Err = pcall(function()
        while wait(0.5) do
           local Success, Err = pcall(function()
+          
+            RefreshLog()
+            
             for i, v in pairs(Players:GetPlayers()) do
                if v:FindFirstChild("Backpack") then               
                   for z, x in pairs(v.Backpack:GetChildren()) do
@@ -170,9 +174,7 @@ local Main = function()
                      end
                   end
                end
-            end
-          
-            RefreshLog()
+            en
           end)
           
           if not Success then
