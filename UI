@@ -222,7 +222,9 @@ Value_4.Text = ""
 Value_4.TextColor3 = Color3.fromRGB(0, 0, 0)
 Value_4.TextSize = 14.000
 
-local function ROLY_fake_script()
+-- Scripts:
+
+local function BOFOEKJ_fake_script() -- Button.ButtonScript 
 	local script = Instance.new('LocalScript', Button)
 
 	local Button = script["Parent"]
@@ -242,8 +244,8 @@ local function ROLY_fake_script()
 	
 	Button.MouseButton1Down:Connect(Toggle)
 end
-coroutine.wrap(ROLY_fake_script)()
-local function NUVLTK_fake_script() -- Button_2.ButtonScript 
+coroutine.wrap(BOFOEKJ_fake_script)()
+local function TDYRF_fake_script() -- Button_2.ButtonScript 
 	local script = Instance.new('LocalScript', Button_2)
 
 	local Button = script["Parent"]
@@ -264,16 +266,16 @@ local function NUVLTK_fake_script() -- Button_2.ButtonScript
 	
 	Button.MouseButton1Down:Connect(Toggle)
 end
-coroutine.wrap(NUVLTK_fake_script)()
-local function EANZN_fake_script() -- Toggle_ACCESSORY.ButtonScript 
+coroutine.wrap(TDYRF_fake_script)()
+local function DKRTLG_fake_script() -- Toggle_ACCESSORY.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_ACCESSORY)
 
 	local Button = script["Parent"]
 	local SetButtonValue = function(Bool)
 		if not Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 		elseif Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 		end
 	end
 	
@@ -286,16 +288,16 @@ local function EANZN_fake_script() -- Toggle_ACCESSORY.ButtonScript
 		SetButtonValue(_G.Settings["ACCESSORY"])
 	end)
 end
-coroutine.wrap(EANZN_fake_script)()
-local function BXUL_fake_script() -- Toggle_WEAPON.ButtonScript 
+coroutine.wrap(DKRTLG_fake_script)()
+local function SBGUZ_fake_script() -- Toggle_WEAPON.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_WEAPON)
 
 	local Button = script["Parent"]
 	local SetButtonValue = function(Bool)
 		if not Bool then
-		   Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 		elseif Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 		end
 	end
 	
@@ -308,16 +310,16 @@ local function BXUL_fake_script() -- Toggle_WEAPON.ButtonScript
 		SetButtonValue(_G.Settings["WEAPON"])
 	end)
 end
-coroutine.wrap(BXUL_fake_script)()
-local function ZLDFE_fake_script() -- Toggle_HISTORY.ButtonScript 
+coroutine.wrap(SBGUZ_fake_script)()
+local function FNBIQ_fake_script() -- Toggle_HISTORY.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_HISTORY)
 
 	local Button = script["Parent"]
 	local SetButtonValue = function(Bool)
 		if not Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 		elseif Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 		end
 	end
 	
@@ -330,8 +332,8 @@ local function ZLDFE_fake_script() -- Toggle_HISTORY.ButtonScript
 		SetButtonValue(_G.Settings["HISTORY"])
 	end)
 end
-coroutine.wrap(ZLDFE_fake_script)()
-local function FZTRM_fake_script() -- Set_WEBHOOK.ButtonScript 
+coroutine.wrap(FNBIQ_fake_script)()
+local function BIOFJB_fake_script() -- Set_WEBHOOK.ButtonScript 
 	local script = Instance.new('LocalScript', Set_WEBHOOK)
 
 	local Button = script["Parent"]
@@ -344,16 +346,16 @@ local function FZTRM_fake_script() -- Set_WEBHOOK.ButtonScript
 		Webhook.Text = "";
 	end)
 end
-coroutine.wrap(FZTRM_fake_script)()
-local function VGHZ_fake_script() -- Toggle_WEBHOOK.ButtonScript 
+coroutine.wrap(BIOFJB_fake_script)()
+local function KDDXXF_fake_script() -- Toggle_WEBHOOK.ButtonScript 
 	local script = Instance.new('LocalScript', Toggle_WEBHOOK)
 
 	local Button = script["Parent"]
 	local SetButtonValue = function(Bool)
 		if not Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 		elseif Bool then
-			Button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			Button:WaitForChild("Value").BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 		end
 	end
 	
@@ -364,4 +366,6 @@ local function VGHZ_fake_script() -- Toggle_WEBHOOK.ButtonScript
 		_G.SaveSettings()
 	end)
 end
-coroutine.wrap(VGHZ_fake_script)()
+coroutine.wrap(KDDXXF_fake_script)()
+
+print("V.1")
