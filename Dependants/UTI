@@ -1,0 +1,38 @@
+local Decode_JSON = function(Table)
+    return HttpService:JSONDecode(Table)
+end
+
+local Get_Data = function(Str)
+    return syn.crypt.base64.decode(Str)
+end
+
+local Adjust_Data = function(String)
+    local STRING_FORMATTED
+
+    for i = 1, 25 do
+        String = String:gsub("(.*)%@.*$", "%1")
+    end
+
+    STRING_FORMATTED = String
+
+    return STRING_FORMATTED
+end
+
+local Adjust_Name = function(String)
+    local STRING_FORMATTED
+
+    for i = 1, 25 do
+        String = String:gsub("(.*)%$.*$", "%1")
+    end
+
+    STRING_FORMATTED = String
+
+    return STRING_FORMATTED
+end
+
+return {
+ Decode = Decode_JSON,
+ GetData = Get_Data,
+ AdjustData = Adjust_Data,
+ AdjustName = Adjust_Name
+}
