@@ -19,6 +19,8 @@ local Toggle_WEBHOOK = Instance.new("TextButton")
 local Value_4 = Instance.new("TextLabel")
 local UNLOAD = Instance.new("TextButton")
 
+_G.INFGUIS.Settings = INF
+
 syn.protect_gui(INF)
 
 INF.Name = "INF"
