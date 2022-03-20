@@ -12,6 +12,24 @@ wait() until game:GetService("Players").LocalPlayer;
 
 Client = game:GetService("Players").LocalPlayer
 
+-- SYNAPSE CHECK
+
+local Synapse, Error = pcall(function()
+   if not syn then
+
+      Client:Kick("\n\nRequires SYNAPSE X")
+
+      return
+   end
+end)
+
+if not Synapse then 
+   
+   Client:Kick("\n\nRequires SYNAPSE X")
+
+   return
+end
+
 -- SERVICES
 
 local HttpService = game:GetService("HttpService")
@@ -37,6 +55,17 @@ _G.GetSettings = function(Str)
    end
 end
 
+_G.TestWebhook = function()
+   syn.request({
+      Url = _G.Settings["WEBHOOK_VALUE"],
+      Method = "POST",
+      Headers = {
+       ["Content-Type"] = "application/json"
+      },
+      Body = HttpService:JSONEncode({content = "@everyone this is now your enchant webhook!"
+   })     
+end
+
 -- SETTINGS 
 
 local Default_Settings = {
@@ -46,22 +75,6 @@ local Default_Settings = {
  ["WEBHOOK"] = false,
  ["WEBHOOK_VALUE"] = ""
 }
-
-local Synapse, Error = pcall(function()
-   if not syn then
-
-      Client:Kick("\n\nRequires SYNAPSE X")
-
-      return
-   end
-end)
-
-if not Synapse then 
-   
-   Client:Kick("\n\nRequires SYNAPSE X")
-
-   return
-end
 
 if not isfile(Settings_File) then
 
