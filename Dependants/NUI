@@ -171,30 +171,30 @@ local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
 	   local Data = {
 	    content = "@everyone",
 	    embeds = {{
-              title = "ENCHANT LOG",
+          title = "ENCHANT LOG",
 	      fields = {
 	       {
-	        name = "PLAYER:"
+	        name = "PLAYER:",
 	        value = Player
 	       },
 	       {
-	        name = "ENCHANT:"
+	        name = "ENCHANT:",
 	        value = Enchant
 	       },
 	       {
-	        name = "WEAPON:"
+	        name = "WEAPON:",
 	        value = Weapon
 	       },
 	       {
-	        name = "SOULBOUND:"
+	        name = "SOULBOUND:",
 	        value = SoulBound
 	       },
 	       {
-	        name = "SERVER ID:"
+	        name = "SERVER ID:",
 	        value = game["JobId"]
 	       },
 	       {
-	        name = "LOCATION:"
+	        name = "LOCATION:",
 	        value = CurrentLocation
 	       }
 	      }
@@ -241,30 +241,30 @@ local Notification_Accessory = function(Player, Enchant, Accessory)
 	   local Data = {
 	    content = "@everyone",
 	    embeds = {{
-              title = "ENCHANT LOG",
+          title = "ENCHANT LOG",
 	      fields = {
 	       {
-	        name = "PLAYER:"
+	        name = "PLAYER:",
 	        value = Player
 	       },
 	       {
-	        name = "ENCHANT:"
+	        name = "ENCHANT:",
 	        value = Enchant
 	       },
 	       {
-	        name = "ACCESSORY:"
+	        name = "ACCESSORY:",
 	        value = Accessory
 	       },
 	       {
-	        name = "SERVER ID:"
+	        name = "SERVER ID:",
 	        value = game["JobId"]
 	       },
 	       {
-	        name = "LOCATION:"
+	        name = "LOCATION:",
 	        value = CurrentLocation
 	       }
 	      }
-            }}
+        }}
 	   }
 	   
 	   local Request = syn.request({
@@ -306,26 +306,26 @@ local Notification_Legendary = function(Player, Weapon)
 	   local Data = {
 	    content = "@everyone",
 	    embeds = {{
-              title = "ENCHANT LOG",
+          title = "ENCHANT LOG",
 	      fields = {
 	       {
-	        name = "PLAYER:"
+	        name = "PLAYER:",
 	        value = Player
 	       },
 	       {
-	        name = "LEGENDARY WEAPON:"
+	        name = "LEGENDARY WEAPON:",
 	        value = Weapon
 	       },
 	       {
-	        name = "SERVER ID:"
+	        name = "SERVER ID:",
 	        value = game["JobId"]
 	       },
 	       {
-	        name = "LOCATION:"
+	        name = "LOCATION:",
 	        value = CurrentLocation
 	       }
 	      }
-            }}
+        }}
 	   }
 	   
 	   local Request = syn.request({
