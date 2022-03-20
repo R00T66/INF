@@ -62,7 +62,7 @@ _G.TestWebhook = function()
       Headers = {
        ["Content-Type"] = "application/json"
       },
-      Body = HttpService:JSONEncode({content = "@everyone this is now your enchant webhook!"
+      Body = HttpService:JSONEncode({content = "@everyone this is now your enchant webhook!"})
    })     
 end
 
