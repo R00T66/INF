@@ -365,7 +365,7 @@ local function KDDXXF_fake_script() -- Toggle_WEBHOOK.ButtonScript
 		_G.Settings["WEBHOOK"] = not _G.Settings["WEBHOOK"]
 		_G.SaveSettings()
 		
-		SetButtonValue(_G.Settings("WEBHOOK"))
+		SetButtonValue(_G.Settings["WEBHOOK"])
 	end)
 end
 coroutine.wrap(KDDXXF_fake_script)()
