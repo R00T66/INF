@@ -185,6 +185,7 @@ local Main = function()
 end
 
 Main()
+print("MAIN V.1 (FIXED?)")
 --[[
 local Cor = coroutine.create(Main)
 local Res = coroutine.resume(Cor)]]
