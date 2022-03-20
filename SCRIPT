@@ -46,7 +46,42 @@ end
 
 local Enchants = { }
 
+local RefreshLog() = function(data)
+   for i, enchants in pairs(Enchants) do
+   
+      if Players:FindFirstChild(enchants.Player) then
+         if enchants.Data == data then
+            table.remove(Enchants, i)
+         end
+      else
+         table.remove(Enchants, i)
+      end
+      
+   end
+end
+
+local Logged = function(data)
+   
+   local bool = false;
+   
+   for i, logged in pairs(Enchants) do
+      if logged.Data == data then 
+         bool = true
+      end
+   end
+   
+   return Bool
+end
+
 local WeaponCheck = function(j, x, v)
+
+   if Logged(j) then return end
+   
+   table.insert(Enchants, {
+      Data = j,
+      Tool = x,
+      Player = v.Name
+   });
    
    local Info = { }
    
@@ -72,6 +107,14 @@ local WeaponCheck = function(j, x, v)
 end
 
 local AccessoryCheck = function(j, x, v)
+   
+   if Logged(j) then return end
+   
+   table.insert(Enchants, {
+      Data = j,
+      Tool = x,
+      Player = v.Name
+   });
    
    local Info = { }
    
@@ -124,12 +167,14 @@ local Main = function()
    pcall(function()
        while wait(0.5) do
           for i, v in pairs(Players:GetPlayers()) do
-             if v:FindFirstChild("Backpack") then
+             if v:FindFirstChild("Backpack") then               
                 for z, x in pairs(v.Backpack:GetChildren()) do
                    Check(x, v)
                 end
              end
           end
+          
+          RefreshLog()
        end
    end)
 end
