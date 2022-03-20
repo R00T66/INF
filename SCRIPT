@@ -46,18 +46,16 @@ end
 
 local Enchants = { }
 
-local RefreshLog = function(data)
+local RefreshLog = function()
    for i, enchants in pairs(Enchants) do
    
       if Players:FindFirstChild(enchants.Player) then
-         print(enchants.Tool.Parent, Players[enchants.Player].Character)
-         if enchants.Data == data then
-            print(enchants.Tool.Parent, Players[enchants.Player].Character)
-            if enchants.Tool.Parent == Players[enchants.Player].Character then
-               table.remove(Enchants, i)
-            end
+         if enchants.Tool.Parent == Players[enchants.Player].Character then
+            table.remove(Enchants, i)
          end
-      else
+      end
+      
+      if not Players:FindFirstChild(enchants.Player) then
          table.remove(Enchants, i)
       end
       
@@ -186,7 +184,6 @@ local Main = function()
 end
 
 Main()
-print("MAIN V.1 (FIXED?)")
 --[[
 local Cor = coroutine.create(Main)
 local Res = coroutine.resume(Cor)]]
