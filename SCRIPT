@@ -50,6 +50,7 @@ local RefreshLog = function(data)
    for i, enchants in pairs(Enchants) do
    
       if Players:FindFirstChild(enchants.Player) then
+         print(enchants.Tool.Parent, Players[enchants.Player].Character)
          if enchants.Data == data then
             print(enchants.Tool.Parent, Players[enchants.Player].Character)
             if enchants.Tool.Parent == Players[enchants.Player].Character then
