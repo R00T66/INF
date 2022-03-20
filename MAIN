@@ -1,0 +1,129 @@
+-- LOADING
+
+local Client;
+
+repeat 
+
+wait() until game.IsLoaded
+
+repeat
+
+wait() until game:GetService("Players").LocalPlayer; 
+
+Client = game:GetService("Players").LocalPlayer
+
+-- SERVICES
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+-- SETTINGS FUNCTIONS
+
+local Settings_File = "INF_SETTINGS.JSON"
+
+_G.Settings = { }
+
+_G.SaveSettings = function()
+   writefile(Settings_File, HttpService:JSONEncode(_G.Settings))
+end
+
+_G.GetSettings = function(Str)
+   if _G.Settings[Str] ~= nil then
+
+       return _G.Settings[Str]
+   else
+ 
+       return false
+   end
+end
+
+-- SETTINGS 
+
+local Default_Settings = {
+ ["ACCESSORY"] = true,
+ ["WEAPON"] = true,
+ ["HISTORY"] = false,
+ ["WEBHOOK"] = false,
+ ["WEBHOOK_VALUE"] = ""
+}
+
+local Synapse, Error = pcall(function()
+   if not syn then
+
+      Client:Kick("\n\nRequires SYNAPSE X")
+
+      return
+   end
+end)
+
+if not Synapse then 
+   
+   Client:Kick("\n\nRequires SYNAPSE X")
+
+   return
+end
+
+if not isfile(Settings_File) then
+
+   writefile(Settings_File, HttpService:JSONEncode(Settings_File));
+
+   _G.Settings = Default_Settings
+
+elseif isfile(Settings_File) then
+
+   local File_Content = readfile(Settings_File)
+   local File_Content_Decoded = HttpService:JSONDecode(File_Content)
+
+   _G.Settings = File_Content_Decoded
+end
+
+-- OTHER
+
+local Load = function(Str)
+   
+   local Success, Error = pcall(function()
+       loadstring(Str)()
+   end)			
+
+   if not Success then
+     
+      Client:Kick("\n\nVITAL ERROR\n\nERROR: " .. Error)
+
+      return  
+   else
+
+      return "OK"
+   end
+end
+
+local GET = function(Str)
+   
+   local Success, Return = pcall(game.HttpGet, game, Str)
+
+   if not Success then
+      
+      Client:Kick("\n\nGET ERROR")
+
+      return
+   else
+ 
+      return Return
+   end
+end
+
+-- GET 
+
+local UI = GET("https://raw.githubusercontent.com/R00T66/INF/main/UI")
+local SCRIPT = GET("https://raw.githubusercontent.com/R00T66/INF/main/SCRIPT")
+
+-- LOADING
+
+local UI_RETURN = Load(UI)
+local SCRIPT_RETURN = Load(SCRIPT)
+
+if UI_RETURN ~= "OK" or SCRIPT_RETURN ~= "OK" then
+
+   Client:Kick("\n\nUNKNOWN ERROR?")
+
+   return
+end
