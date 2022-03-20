@@ -166,7 +166,7 @@ local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
-	if _G.Settings["WEBHOOK_VALUE"] ~= "" then
+	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
 	   
 	   local Data = {
 	    content = "@everyone",
@@ -236,7 +236,7 @@ local Notification_Accessory = function(Player, Enchant, Accessory)
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
-	if _G.Settings["WEBHOOK_VALUE"] ~= "" then
+	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
 	   
 	   local Data = {
 	    content = "@everyone",
@@ -301,7 +301,7 @@ local Notification_Legendary = function(Player, Weapon)
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
-	if _G.Settings["WEBHOOK_VALUE"] ~= "" then
+	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
 	   
 	   local Data = {
 	    content = "@everyone",
