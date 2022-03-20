@@ -71,6 +71,24 @@ local WeaponCheck = function(j, x, v)
    )]]
 end
 
+local AccessoryCheck = function(j, x, v)
+   
+   local Info = { }
+   
+   Info["Enchant"] = j;
+   Info["Accessory"] = DeepwokenUtility.AdjustName(x.Name);
+   Info["Player"] = v.Name;
+   
+   NotificationUI.AccessoryNotification(
+    Info["Player"], 
+    Info["Enchant"],
+    Info["Accessory"]
+   )
+   --[[HistoryUI.LogAccessory(
+    
+   )]]
+end
+
 local Check = function(x, v)
    if not x:IsA("Tool") then return end
    
@@ -83,12 +101,22 @@ local Check = function(x, v)
       MainJSON = DeepwokenUtility.AdjustData(MainJSON);
       MainJSON = DeepwokenUtility.Decode(MainJSON);
       
-      if MainJSON.Enchant ~= nil then
+      if MainJSON.Enchant ~= nil and _G.Settings["WEAPON"] then
          WeaponCheck(MainJSON, x, v)
+      else
+         return
       end
+      
    elseif x:FindFirstChild("Enchant") then
       
       local MainValue = x:WaitForChild("Enchant").Value
+      
+      if MainValue ~= "" and _G.Settings["ACCESSORY"] then
+         AccessoryCheck(MainValue, x, v)
+      else
+         return
+      end
+      
    end
 end
 
@@ -105,3 +133,6 @@ local Main = function()
        end
    end)
 end
+
+local Cor = coroutine.create(Main)
+local Res = coroutine.resume(Cor)
