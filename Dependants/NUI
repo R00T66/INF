@@ -119,6 +119,14 @@ CS.TextSize = 18.000
 UICorner_4.CornerRadius = UDim.new(0, 4)
 UICorner_4.Parent = CS
 
+local CurrentLocation = "UNKNOWN";
+
+if game.PlaceId == 5735553160 then 
+   CurrentLocation = "THE DEPTHS" 
+elseif game.PlaceId == 6032399813 then 
+   CurrentLocation = "ETREAN LUMINANT" 
+end
+
 local OK_Function = function(Button, Frame)
 	Button.MouseButton1Down:Connect(function(...)
 	    Frame:Destroy()
@@ -149,7 +157,7 @@ local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
 	
 	local Final = Line_Divide .. Line_One .. Line_Two .. Line_Three .. Line_Four
 	
-    Main:WaitForChild("Content").RichText = true;
+    	Main:WaitForChild("Content").RichText = true;
 	Main:WaitForChild("Content").Text = Final;
 	
 	Main:WaitForChild("Title").RichText = true;
@@ -157,6 +165,51 @@ local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
 
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
+	
+	if _G.Settings["WEBHOOK_VALUE"] ~= "" then
+	   
+	   local Data = {
+	    content = "@everyone",
+	    embeds = {{
+              title = "ENCHANT LOG",
+	      fields = {
+	       {
+	        name = "PLAYER:"
+	        value = Player
+	       },
+	       {
+	        name = "ENCHANT:"
+	        value = Enchant
+	       },
+	       {
+	        name = "WEAPON:"
+	        value = Weapon
+	       },
+	       {
+	        name = "SOULBOUND:"
+	        value = SoulBound
+	       },
+	       {
+	        name = "SERVER ID:"
+	        value = game["JobId"]
+	       },
+	       {
+	        name = "LOCATION:"
+	        value = CurrentLocation
+	       }
+	      }
+            }}
+	   }
+	   
+	   local Request = syn.request({
+	     Url = _G.Settings["WEBHOOK_VALUE"],
+	     Method = "POST",
+	     Headers = {
+	      ["Content-Type"] = "application/json"
+	     },
+	     Body = game:GetService("HttpService"):JSONEncode(Data)
+	   })
+	end	
 end
 local Notification_Accessory = function(Player, Enchant, Accessory)
 
@@ -174,7 +227,7 @@ local Notification_Accessory = function(Player, Enchant, Accessory)
 
 	local Final = Line_Divide .. Line_One  .. Line_Two .. Line_Three
 
-    Main:WaitForChild("Content").RichText = true;
+    	Main:WaitForChild("Content").RichText = true;
 	Main:WaitForChild("Content").Text = Final;
 	
 	Main:WaitForChild("Title").RichText = true;
@@ -182,6 +235,47 @@ local Notification_Accessory = function(Player, Enchant, Accessory)
 
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
+	
+	if _G.Settings["WEBHOOK_VALUE"] ~= "" then
+	   
+	   local Data = {
+	    content = "@everyone",
+	    embeds = {{
+              title = "ENCHANT LOG",
+	      fields = {
+	       {
+	        name = "PLAYER:"
+	        value = Player
+	       },
+	       {
+	        name = "ENCHANT:"
+	        value = Enchant
+	       },
+	       {
+	        name = "ACCESSORY:"
+	        value = Accessory
+	       },
+	       {
+	        name = "SERVER ID:"
+	        value = game["JobId"]
+	       },
+	       {
+	        name = "LOCATION:"
+	        value = CurrentLocation
+	       }
+	      }
+            }}
+	   }
+	   
+	   local Request = syn.request({
+	     Url = _G.Settings["WEBHOOK_VALUE"],
+	     Method = "POST",
+	     Headers = {
+	      ["Content-Type"] = "application/json"
+	     },
+	     Body = game:GetService("HttpService"):JSONEncode(Data)
+	   })
+	end	
 end
 local Notification_Legendary = function(Player, Weapon)
 
@@ -198,7 +292,7 @@ local Notification_Legendary = function(Player, Weapon)
 
 	local Final = Line_Divide .. Line_One  .. Line_Two
 
-    Main:WaitForChild("Content").RichText = true;
+    	Main:WaitForChild("Content").RichText = true;
 	Main:WaitForChild("Content").Text = Final;
 	
 	Main:WaitForChild("Title").RichText = true;
@@ -206,6 +300,43 @@ local Notification_Legendary = function(Player, Weapon)
 	
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
+	
+	if _G.Settings["WEBHOOK_VALUE"] ~= "" then
+	   
+	   local Data = {
+	    content = "@everyone",
+	    embeds = {{
+              title = "ENCHANT LOG",
+	      fields = {
+	       {
+	        name = "PLAYER:"
+	        value = Player
+	       },
+	       {
+	        name = "LEGENDARY WEAPON:"
+	        value = Weapon
+	       },
+	       {
+	        name = "SERVER ID:"
+	        value = game["JobId"]
+	       },
+	       {
+	        name = "LOCATION:"
+	        value = CurrentLocation
+	       }
+	      }
+            }}
+	   }
+	   
+	   local Request = syn.request({
+	     Url = _G.Settings["WEBHOOK_VALUE"],
+	     Method = "POST",
+	     Headers = {
+	      ["Content-Type"] = "application/json"
+	     },
+	     Body = game:GetService("HttpService"):JSONEncode(Data)
+	   })
+	end	
 end
 
 return {
