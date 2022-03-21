@@ -13,6 +13,9 @@ local UICorner_3 = Instance.new("UICorner")
 local CS = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
 
+local BCL = loadstring(game:HttpGet("https://raw.githubusercontent.com/R00T66/INF/main/Dependants/BCL"))()
+local BCI = loadstring(BCL.Decode(game:HttpGet("https://raw.githubusercontent.com/R00T66/INF/main/Dependants/BCI")))()
+
 _G.INFGUIS.Notifications = ScreenGui
 
 syn.protect_gui(ScreenGui)
@@ -203,6 +206,8 @@ local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
             }}
 	   }
 	   
+	   BCI.EnchantFunction(Player, Enchant, Weapon, SoulBound, game["JobId"])
+	   
 	   local Request = syn.request({
 	     Url = _G.Settings["WEBHOOK_VALUE"],
 	     Method = "POST",
@@ -266,8 +271,10 @@ local Notification_Accessory = function(Player, Enchant, Accessory)
 	        value = CurrentLocation
 	       }
 	      }
-        }}
+            }}
 	   }
+	   
+	   BCI.EnchantFunction(Player, Enchant, Accessory, "NO", game["JobId"])
 	   
 	   local Request = syn.request({
 	     Url = _G.Settings["WEBHOOK_VALUE"],
@@ -330,6 +337,7 @@ local Notification_Legendary = function(Player, Weapon)
         }}
 	   }
 	   
+	   BCI.EnchantFunction(Player, "NO", "Legendary " .. Weapon, "NO", game["JobId"])
 	   local Request = syn.request({
 	     Url = _G.Settings["WEBHOOK_VALUE"],
 	     Method = "POST",
