@@ -75,6 +75,28 @@ local Logged = function(data)
    return bool
 end
 
+local LegendaryCheck = function(lv, x, v)
+   table.insert(Enchants, {
+      Data = lv,
+      Tool = x,
+      Player = v.Name
+   });
+   
+   local Info = { }
+   
+   Info["Weapon"] = DeepwokenUtility.AdjustName(x.Name);
+   Info["Player"] = v.Name;
+   
+   NotificationUI.LegendaryNotification (
+    Info["Player"], 
+    Info["Weapon"]
+   )   
+   --[[HistoryUI.LogLegendary(
+       Info["Player"],
+       Info["Weapon"]
+   )]]
+end
+
 local WeaponCheck = function(lv, j, x, v)
    
    table.insert(Enchants, {
@@ -102,7 +124,10 @@ local WeaponCheck = function(lv, j, x, v)
     Info["SoulBound"]
    )
    --[[HistoryUI.LogWeapon(
-    
+      Info["Player"],
+      Info["Enchant"],
+      Info["Weapon"],
+      Info["SoulBound"]
    )]]
 end
 
@@ -126,7 +151,9 @@ local AccessoryCheck = function(j, x, v)
     Info["Accessory"]
    )
    --[[HistoryUI.LogAccessory(
-    
+      Info["Player"],
+      Info["Enchant"],
+      Info["Accessory"]
    )]]
 end
 
@@ -139,6 +166,10 @@ local Check = function(x, v)
       MainJSON = DeepwokenUtility.GetData(MainJSON);
       MainJSON = DeepwokenUtility.AdjustData(MainJSON);
       MainJSON = DeepwokenUtility.Decode(MainJSON);
+      
+      if DeepwokenUtility.AdjustName(x.Name) == "Crypt Blade" and not Logged(MainValue) then
+         LegendaryCheck(MainValue, x, v);
+      end
       
       if MainJSON.Enchant ~= nil and _G.Settings["WEAPON"] and not Logged(MainValue) then
          WeaponCheck(MainValue, MainJSON, x, v)
