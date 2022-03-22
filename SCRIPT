@@ -193,7 +193,11 @@ local Main = function()
    local Success, Err = pcall(function()
        while wait(0.5) do
           local Success, Err = pcall(function()
-          
+            
+            if _G.UNLOADEDINF then 
+               break;
+            end
+            
             RefreshLog()
             
             for i, v in pairs(Players:GetPlayers()) do
@@ -214,7 +218,5 @@ local Main = function()
    end)
 end
 
-Main()
---[[
 local Cor = coroutine.create(Main)
-local Res = coroutine.resume(Cor)]]
+local Res = coroutine.resume(Cor)
