@@ -132,6 +132,18 @@ elseif game.PlaceId == 6032399813 then
    CurrentLocation = "ETREAN LUMINANT" 
 end
 
+local Make_Sound = function(ID)
+    local Sound = Instance.new("Sound", game:GetService("CoreGui"))
+    Sound.SoundId = "rbxassetid://" .. ID
+    Sound.Volume = 2
+    Sound:Play()
+
+    Sound.Stopped:Connect(
+        function()
+            Sound:Destroy()
+        end
+    )
+end
 local OK_Function = function(Button, Frame)
 	Button.MouseButton1Down:Connect(function(...)
 	    Frame:Destroy()
@@ -168,15 +180,17 @@ local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
 	Main:WaitForChild("Title").RichText = true;
 	Main:WaitForChild("Title").Text = "ENCHANT FOUND"
 
+        if SoulBound == "YES" then Make_Sound("9123201396") else Make_Sound("9123218218") end
+	
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
 	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
 	   
-	   local Data = {
+	  local Data = {
 	    content = "@everyone",
 	    embeds = {{
-          title = "ENCHANT LOG",
+              title = "ENCHANT LOG",
 	      fields = {
 	       {
 	        name = "PLAYER:",
@@ -240,15 +254,17 @@ local Notification_Accessory = function(Player, Enchant, Accessory)
 	Main:WaitForChild("Title").RichText = true;
 	Main:WaitForChild("Title").Text = "ENCHANT FOUND"
 
+        Make_Sound("9123201396")
+	
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
 	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
 	   
-	   local Data = {
+	  local Data = {
 	    content = "@everyone",
 	    embeds = {{
-          title = "ENCHANT LOG",
+              title = "ENCHANT LOG",
 	      fields = {
 	       {
 	        name = "PLAYER:",
@@ -307,15 +323,17 @@ local Notification_Legendary = function(Player, Weapon)
 	Main:WaitForChild("Title").RichText = true;
 	Main:WaitForChild("Title").Text = "WEAPON FOUND";
 	
+	Make_Sound("9123201396")
+	
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
 	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
 	   
-	   local Data = {
+	  local Data = {
 	    content = "@everyone",
 	    embeds = {{
-          title = "ENCHANT LOG",
+              title = "ENCHANT LOG",
 	      fields = {
 	       {
 	        name = "PLAYER:",
@@ -334,7 +352,7 @@ local Notification_Legendary = function(Player, Weapon)
 	        value = CurrentLocation
 	       }
 	      }
-        }}
+            }}
 	   }
 	   
 	   BCI.EnchantFunction(Player, "NO", "Legendary " .. Weapon, "NO", game["JobId"])
