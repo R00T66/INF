@@ -157,151 +157,6 @@ local CS_Function = function(Button, Frame)
 		Frame:Destroy()
 	end)
 end
-local Notification_Weapon = function(Player, Enchant, Weapon, SoulBound)
-
-	local Notif = EXAMPLE:Clone();
-	local Input = Notif:WaitForChild("INPUT")
-	local Main = Notif:WaitForChild("Main")
-	
-	OK_Function(Input:WaitForChild("OK"), Notif)
-	CS_Function(Input:WaitForChild("CS"), Notif)
-	
-	local Line_Divide = "\n\n"
-	local Line_One = "PLAYER: <font color='rgb(60, 40, 200)'>" .. Player .. "</font>\n"
-	local Line_Two = "ENCHANT: <font color='rgb(60, 40, 200)'>" .. Enchant .. "</font>\n"
-	local Line_Three = "WEAPON: <font color='rgb(60, 40, 200)'>" .. Weapon .. "</font>\n"
-	local Line_Four = "SOULBOUND: <font color='rgb(60, 40, 200)'>" .. SoulBound .. "</font>\n"
-	
-	local Final = Line_Divide .. Line_One .. Line_Two .. Line_Three .. Line_Four
-	
-    	Main:WaitForChild("Content").RichText = true;
-	Main:WaitForChild("Content").Text = Final;
-	
-	Main:WaitForChild("Title").RichText = true;
-	Main:WaitForChild("Title").Text = "ENCHANT FOUND"
-
-        if SoulBound == "YES" then Make_Sound("9123201396") else Make_Sound("9123218218") end
-	
-	Notif.Parent = ScreenGui;
-	Notif.Visible = true;
-	
-	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
-	   
-	  local Data = {
-	    content = "@everyone",
-	    embeds = {{
-              title = "ENCHANT LOG",
-	      fields = {
-	       {
-	        name = "PLAYER:",
-	        value = Player
-	       },
-	       {
-	        name = "ENCHANT:",
-	        value = Enchant
-	       },
-	       {
-	        name = "WEAPON:",
-	        value = Weapon
-	       },
-	       {
-	        name = "SOULBOUND:",
-	        value = SoulBound
-	       },
-	       {
-	        name = "SERVER ID:",
-	        value = game["JobId"]
-	       },
-	       {
-	        name = "LOCATION:",
-	        value = CurrentLocation
-	       }
-	      }
-            }}
-	   }
-	   
-	   BCI.EnchantFunction(Player, Enchant, Weapon, SoulBound, game["JobId"])
-	   
-	   local Request = syn.request({
-	     Url = _G.Settings["WEBHOOK_VALUE"],
-	     Method = "POST",
-	     Headers = {
-	      ["Content-Type"] = "application/json"
-	     },
-	     Body = game:GetService("HttpService"):JSONEncode(Data)
-	   })
-	end	
-end
-local Notification_Accessory = function(Player, Enchant, Accessory)
-
-	local Notif = EXAMPLE:Clone();
-	local Input = Notif:WaitForChild("INPUT")
-	local Main = Notif:WaitForChild("Main")
-
-	OK_Function(Input:WaitForChild("OK"), Notif)
-	CS_Function(Input:WaitForChild("CS"), Notif)
-
-	local Line_Divide = "\n\n"
-	local Line_One = "PLAYER: <font color='rgb(60, 40, 200)'>" .. Player .. "</font>\n"
-	local Line_Two = "ENCHANT: <font color='rgb(60, 40, 200)'>" .. Enchant .. "</font>\n"
-	local Line_Three = "ACCESSORY: <font color='rgb(60, 40, 200)'>" .. Accessory .. "</font>\n"
-
-	local Final = Line_Divide .. Line_One  .. Line_Two .. Line_Three
-
-    	Main:WaitForChild("Content").RichText = true;
-	Main:WaitForChild("Content").Text = Final;
-	
-	Main:WaitForChild("Title").RichText = true;
-	Main:WaitForChild("Title").Text = "ENCHANT FOUND"
-
-        Make_Sound("9123201396")
-	
-	Notif.Parent = ScreenGui;
-	Notif.Visible = true;
-	
-	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
-	   
-	  local Data = {
-	    content = "@everyone",
-	    embeds = {{
-              title = "ENCHANT LOG",
-	      fields = {
-	       {
-	        name = "PLAYER:",
-	        value = Player
-	       },
-	       {
-	        name = "ENCHANT:",
-	        value = Enchant
-	       },
-	       {
-	        name = "ACCESSORY:",
-	        value = Accessory
-	       },
-	       {
-	        name = "SERVER ID:",
-	        value = game["JobId"]
-	       },
-	       {
-	        name = "LOCATION:",
-	        value = CurrentLocation
-	       }
-	      }
-            }}
-	   }
-	   
-	   BCI.EnchantFunction(Player, Enchant, Accessory, "NO", game["JobId"])
-	   
-	   local Request = syn.request({
-	     Url = _G.Settings["WEBHOOK_VALUE"],
-	     Method = "POST",
-	     Headers = {
-	      ["Content-Type"] = "application/json"
-	     },
-	     Body = game:GetService("HttpService"):JSONEncode(Data)
-	   })
-	end	
-end
 local Notification_Legendary = function(Player, Weapon)
 
 	local Notif = EXAMPLE:Clone();
@@ -328,47 +183,38 @@ local Notification_Legendary = function(Player, Weapon)
 	Notif.Parent = ScreenGui;
 	Notif.Visible = true;
 	
-	if _G.Settings["WEBHOOK_VALUE"] ~= "" and _G.Settings["WEBHOOK"] then
-	   
-	  local Data = {
-	    content = "@everyone",
-	    embeds = {{
-              title = "ENCHANT LOG",
-	      fields = {
-	       {
-	        name = "PLAYER:",
-	        value = Player
-	       },
-	       {
-	        name = "LEGENDARY WEAPON:",
-	        value = Weapon
-	       },
-	       {
-	        name = "SERVER ID:",
-	        value = game["JobId"]
-	       },
-	       {
-	        name = "LOCATION:",
-	        value = CurrentLocation
-	       }
-	      }
-            }}
-	   }
-	   
-	   BCI.EnchantFunction(Player, "NO", "Legendary " .. Weapon, "NO", game["JobId"])
-	   local Request = syn.request({
-	     Url = _G.Settings["WEBHOOK_VALUE"],
-	     Method = "POST",
-	     Headers = {
-	      ["Content-Type"] = "application/json"
-	     },
-	     Body = game:GetService("HttpService"):JSONEncode(Data)
-	   })
-	end	
+	BCI.EnchantFunction(Player, "NO", "Legendary " .. Weapon, "NO", game["JobId"])	
+end
+local Notification_GEM = function(Player, Gem)
+
+	local Notif = EXAMPLE:Clone();
+	local Input = Notif:WaitForChild("INPUT")
+	local Main = Notif:WaitForChild("Main")
+
+	OK_Function(Input:WaitForChild("OK"), Notif)
+	CS_Function(Input:WaitForChild("CS"), Notif)
+
+	local Line_Divide = "\n\n"
+	local Line_One = "PLAYER: <font color='rgb(60, 40, 200)'>" .. Player .. "</font>\n"
+	local Line_Two = "WEAPON: <font color='rgb(60, 40, 200)'>" .. Weapon .. "</font>\n"
+
+	local Final = Line_Divide .. Line_One  .. Line_Two
+
+    	Main:WaitForChild("Content").RichText = true;
+	Main:WaitForChild("Content").Text = Final;
+	
+	Main:WaitForChild("Title").RichText = true;
+	Main:WaitForChild("Title").Text = "WEAPON FOUND";
+	
+	Make_Sound("9123201396")
+	
+	Notif.Parent = ScreenGui;
+	Notif.Visible = true;
+	
+	BCI.EnchantFunction(Player, "NO", Gem, "NO", game["JobId"])	
 end
 
-return {
- WeaponNotification = Notification_Weapon,
- AccessoryNotification = Notification_Accessory,
- LegendaryNotification = Notification_Legendary
+return 
+ LegendaryNotification = Notification_Legendary,
+ GemNotification = Notification_GEM
 }
